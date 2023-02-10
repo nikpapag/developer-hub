@@ -35,7 +35,7 @@ roleRef:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: immutable-delegate-account-token
+  name: delegate-account-token
   namespace: harness-delegate-ng
 type: Opaque
 data:
@@ -71,7 +71,7 @@ spec:
       terminationGracePeriodSeconds: 600
       restartPolicy: Always
       containers:
-      - image: <immutable delegate image>
+      - image: <delegate image>
         imagePullPolicy: Always
         name: delegate
         ports:
@@ -93,7 +93,7 @@ spec:
           failureThreshold: 2
         envFrom:
         - secretRef:
-          name: immutable-delegate-account-token
+          name: delegate-account-token
 
 env:
 - name: JAVA_OPTS
